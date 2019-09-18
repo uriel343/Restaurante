@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleordenCreateDlg" widgetVar="DetalleordenCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDetalleordenTitle}">
+            <h:form id="DetalleordenCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleordenController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDetalleordenLabel_detalleordenPK_iddetalleorden}" for="detalleordenPK_iddetalleorden" />
+                        <p:inputText id="detalleordenPK_iddetalleorden" value="#{detalleordenController.selected.detalleordenPK.iddetalleorden}" title="#{bundle.CreateDetalleordenTitle_detalleordenPK_iddetalleorden}" required="true" requiredMessage="#{bundle.CreateDetalleordenRequiredMessage_detalleordenPK_iddetalleorden}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleordenLabel_precioplato}" for="precioplato" />
+                        <p:inputText id="precioplato" value="#{detalleordenController.selected.precioplato}" title="#{bundle.CreateDetalleordenTitle_precioplato}" required="true" requiredMessage="#{bundle.CreateDetalleordenRequiredMessage_precioplato}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleordenLabel_cantidadplato}" for="cantidadplato" />
+                        <p:inputText id="cantidadplato" value="#{detalleordenController.selected.cantidadplato}" title="#{bundle.CreateDetalleordenTitle_cantidadplato}" required="true" requiredMessage="#{bundle.CreateDetalleordenRequiredMessage_cantidadplato}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleordenLabel_preciototal}" for="preciototal" />
+                        <p:inputText id="preciototal" value="#{detalleordenController.selected.preciototal}" title="#{bundle.CreateDetalleordenTitle_preciototal}" required="true" requiredMessage="#{bundle.CreateDetalleordenRequiredMessage_preciototal}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleordenLabel_fechaorden}" for="fechaorden" />
+                        <p:calendar id="fechaorden" pattern="MM/dd/yyyy HH:mm:ss" value="#{detalleordenController.selected.fechaorden}" title="#{bundle.EditDetalleordenTitle_fechaorden}" required="true" requiredMessage="#{bundle.EditDetalleordenRequiredMessage_fechaorden}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleordenLabel_orden}" for="orden" />
+                        <p:selectOneMenu id="orden" value="#{detalleordenController.selected.orden}" required="true" requiredMessage="#{bundle.EditDetalleordenRequiredMessage_orden}">
+                            <f:selectItems value="#{ordenController.itemsAvailableSelectOne}"
+                                           var="ordenItem"
+                                           itemValue="#{ordenItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDetalleordenLabel_idcocinero}" for="idcocinero" />
+                        <p:selectOneMenu id="idcocinero" value="#{detalleordenController.selected.idcocinero}" required="true" requiredMessage="#{bundle.EditDetalleordenRequiredMessage_idcocinero}">
+                            <f:selectItems value="#{cocinerosController.itemsAvailableSelectOne}"
+                                           var="idcocineroItem"
+                                           itemValue="#{idcocineroItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDetalleordenLabel_idplato}" for="idplato" />
+                        <p:selectOneMenu id="idplato" value="#{detalleordenController.selected.idplato}" required="true" requiredMessage="#{bundle.EditDetalleordenRequiredMessage_idplato}">
+                            <f:selectItems value="#{platosController.itemsAvailableSelectOne}"
+                                           var="idplatoItem"
+                                           itemValue="#{idplatoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleordenController.create}" value="#{bundle.Save}" update="display,:DetalleordenListForm:datalist,:growl" oncomplete="handleSubmit(args,'DetalleordenCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleordenCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

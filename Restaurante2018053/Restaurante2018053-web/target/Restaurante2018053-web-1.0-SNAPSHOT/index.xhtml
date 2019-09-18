@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Uriel's Restaurant</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body class="homepage is-preload">
+        <div id="page-wrapper">
+
+	<!-- Header -->
+	<div id="header">
+
+	<!-- Inner -->
+	<div class="inner">
+			<header>
+			<h1>Uriel's Restaurant</h1>
+			<hr />
+			<p>Another fine Restaurant</p>
+			</header>
+
+            </div>
+
+	<!-- Nav -->
+		<nav id="nav">
+		<ul>
+		<li><h:link outcome="welcomePrimefaces" value="Primefaces welcome page" /></li>                                            
+                <li><h:link outcome="/areas/List" value="Areas"/></li>
+                <li><h:link outcome="/clientes/List" value="Clientes"/></li>
+                <li><h:link outcome="/cocineros/List" value="Cocineros"/></li>
+                <li><h:link outcome="/mesas/List" value="Mesas"/></li>
+                <li><h:link outcome="/meseros/List" value="Meseros"/></li>
+                <li><h:link outcome="/orden/List" value="Ordenes Clientes"/></li>
+                <li><h:link outcome="/detalleorden/List" value="Detalle Orden"/></li>
+                <li><h:link outcome="/platos/List" value="Platillos"/></li>
+		</ul>
+		</nav>
+
+	</div>
+        </div>    
+    </h:body>
+</html>
+
